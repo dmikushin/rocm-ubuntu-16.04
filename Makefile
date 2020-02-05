@@ -2,10 +2,10 @@ VERSION ?= 0.11
 ifdef BASE_IMAGE
 	BUILD_ARG = --build-arg BASE_IMAGE=$(BASE_IMAGE)
 	ifndef NAME
-		NAME = phusion/baseimage-$(subst :,-,${BASE_IMAGE})
+		NAME = nekkar/rocm-ubuntu-16.04-$(subst :,-,${BASE_IMAGE})
 	endif
 else
-	NAME ?= phusion/baseimage
+	NAME ?= nekkar/rocm-ubuntu-16.04
 endif
 ifdef TAG_ARCH
 	# VERSION_ARG = $(VERSION)-$(subst /,-,$(subst :,-,${BASE_IMAGE}))-$(TAG_ARCH)

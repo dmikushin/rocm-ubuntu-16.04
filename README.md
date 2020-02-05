@@ -1,9 +1,6 @@
-# A minimal Ubuntu base image modified for Docker-friendliness
+# A minimal Ubuntu 16.04 for ROCm cluster
 
-[![](https://badge.imagelayers.io/phusion/baseimage:latest.svg)](https://imagelayers.io/?images=phusion/baseimage:latest 'Get your own badge on imagelayers.io')
-[![Travis](https://img.shields.io/travis/phusion/baseimage-docker.svg)](https://travis-ci.org/phusion/baseimage-docker)
-
-_Baseimage-docker only consumes 8.3 MB RAM and is much more powerful than Busybox or Alpine. See why below._
+This Docker image is based on the famous [phusion/baseimage-docker](http://phusion.github.io/baseimage-docker/).
 
 Baseimage-docker is a special [Docker](https://www.docker.com) image that is configured for correct use within Docker containers. It is Ubuntu, plus:
 
@@ -125,9 +122,9 @@ It follows that Baseimage-docker also does not deny the Docker philosophy. In fa
 
 To look around in the image, run:
 
-    docker run --rm -t -i phusion/baseimage:<VERSION> /sbin/my_init -- bash -l
-
-where `<VERSION>` is [one of the baseimage-docker version numbers](https://github.com/phusion/baseimage-docker/blob/master/Changelog.md).
+```
+sudo docker run --device=/dev/kfd --device=/dev/dri --ipc=host --shm-size 16G --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --rm -t -i nekkar/rocm-ubuntu-16.04:0.11 /sbin/my_init -- bash -l
+```
 
 You don't have to download anything manually. The above command will automatically pull the baseimage-docker image from the Docker registry.
 

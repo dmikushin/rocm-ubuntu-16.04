@@ -10,7 +10,7 @@ set -e
 echo "Getting qemu package for $QEMU_ARCH"
 
 # Fake qemu for amd64 builds to avoid breaking COPY in Dockerfile
-if [ $QEMU_ARCH == 'amd64' ]; then
+if [ "$QEMU_ARCH" == 'amd64' ]; then
     touch x86_64_qemu-"$QEMU_ARCH"-static.tar.gz
     mv x86_64_qemu-${QEMU_ARCH}-static.tar.gz image
 else
