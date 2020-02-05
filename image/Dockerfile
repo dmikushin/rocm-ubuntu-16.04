@@ -1,6 +1,6 @@
-ARG BASE_IMAGE=ubuntu:18.04
+ARG BASE_IMAGE=ubuntu:16.04
 FROM $BASE_IMAGE
-MAINTAINER Phusion <info@phusion.nl>
+MAINTAINER Dmitry Mikushin <dmitry@kernelgen.org>
 
 ARG QEMU_ARCH
 ADD x86_64_qemu-${QEMU_ARCH}-static.tar.gz /usr/bin
